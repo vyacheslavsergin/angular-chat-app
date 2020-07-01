@@ -1,0 +1,59 @@
+<section class="login-page">
+  <div class="login-page-container">
+    <h1>Web client</h1>
+    <form
+      [formGroup]="form"
+      (ngSubmit)="onSubmit()"
+    >
+      <div class="input-field">
+        <input
+          id="name"
+          type="text"
+          formControlName="name"
+        >
+        <label for="name">Name</label>
+        <span
+          class="helper-text red-text"
+          *ngIf="form.get('name').invalid && form.get('name').touched"
+        >
+          <span *ngIf="form.get('name').errors['required'] || form.invalid">
+            Name не должен быть пустым
+          </span>
+        </span>
+      </div>
+
+      <div class="input-field">
+        <input
+          id="room"
+          type="text"
+          formControlName="room"
+        >
+        <label for="room">Room</label>
+        <span
+          class="helper-text red-text"
+          *ngIf="form.get('room').invalid && form.get('room').touched"
+        >
+          <span *ngIf="form.get('room').errors['required']">
+            Room не должен быть пустым
+          </span>
+          <span *ngIf="form.get('room').errors['minlength'] &&
+                       form.get('room').errors['minlength']['requiredLength']"
+          >
+            Пароль должен быть больше {{form.get('room').errors['minlength']['requiredLength']}} символов.
+          </span>
+        </span>
+      </div>
+
+      <button
+        class="btn waves-effect waves-light"
+        type="submit"
+        name="action"
+        [disabled]="form.invalid"
+      >
+        Enter chat
+        <i class="material-icons right">sent</i>
+      </button>
+    </form>
+    <div>Welcome to web-client.</div>
+  </div>
+</section>

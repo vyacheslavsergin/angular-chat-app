@@ -1,0 +1,20 @@
+@import '../../styles/media.config.scss';
+
+.login-page {
+  max-width: 368px;
+  min-width: auto;
+  height: 100%;
+  margin: 0 auto;
+
+  @include tablet {
+    max-width: 608px;
+  }
+
+  @include desktop {
+    max-width: 928px;
+  }
+}
+
+.login-page-container {
+  transform: translateY(125px);
+}
